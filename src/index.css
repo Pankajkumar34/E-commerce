@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.root,
+#root,
+
+#docs-root{
+    --lighter1:#c3dacc86;
+    --lighter2:#e4f0e9da;
+    --Darken:#cca27e;
+    --color:orangered;
+    --search:#ff6000;
+    --primary1:#2b3d4c;
+    --primary2:#354d61;
+}
+@layer{
+  .logo{
+    @apply h-[6em] p-[1.5em] 
+  }
+ 
+  .header-upper{
+    @apply bg-[#dfece4]
+  }
+  .Header-top{
+    @apply bg-[#e4f0e9da]
+  }
+  .cartCount{
+    @apply w-[15px] h-[17px] flex items-center rounded-[100%] pl-[3px] left-[17px] bg-white absolute top-0;
+   
+  }
+}
