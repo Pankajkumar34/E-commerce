@@ -4,29 +4,72 @@
 
 .root,
 #root,
-
-#docs-root{
-    --lighter1:#c3dacc86;
-    --lighter2:#e4f0e9da;
-    --Darken:#cca27e;
-    --color:orangered;
-    --search:#ff6000;
-    --primary1:#2b3d4c;
-    --primary2:#354d61;
+#docs-root {
+  --lighter1: #c3dacc86;
+  --lighter2: #e4f0e9da;
+  --Darken: #cca27e;
+  --color: orangered;
+  --search: #ff6000;
+  --primary1: #2b3d4c;
+  --primary2: #354d61;
 }
-@layer{
-  .logo{
-    @apply h-[6em] p-[1.5em] 
+
+body {
+}
+@layer {
+  body {
+    font-family: "Poppins", sans-serif;
   }
- 
-  .header-upper{
-    @apply bg-[#dfece4]
+  .active {
+    @apply text-[#ff0000] !important;
   }
-  .Header-top{
-    @apply bg-[#e4f0e9da]
+  .logo {
+    @apply h-[6em] p-[1.5em];
   }
-  .cartCount{
+
+  .header-upper {
+    @apply bg-[#dfece4];
+  }
+  .Header-top {
+    @apply bg-[#e4f0e9da];
+  }
+  .cartCount {
     @apply w-[15px] h-[17px] flex items-center rounded-[100%] pl-[3px] left-[17px] bg-white absolute top-0;
-   
   }
+}
+.banner {
+  background-position: center;
+  height: 80vh;
+  background-image: url("./assets/bgimg.jpg");
+}
+.banner1 {
+background-repeat: no-repeat;
+  background-image: url("./assets/girlSlidee.jpg");
+  height: 80vh;
+
+}
+.popularProductheading{
+  font-size: 40px;
+  font-weight: 700;
+  color: #ff6000;
+
+  font-family: math;
+}
+.slick-prev:before {
+  content: '←';
+  font-size: 30px;
+}
+
+.slick-next:before {
+  content: '→';
+  font-size: 30px;
+}
+
+.slick-prev {
+  left:34px;
+  z-index: 1;
+}
+.slick-next {
+  right: 34px;
+  z-index: 1;
 }

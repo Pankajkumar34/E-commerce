@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { AddProduct } from '../../features/productsSlice';
 
@@ -13,7 +13,7 @@ function featureProduct() {
 
     // API hit here 
     const productsFetch = () => {
-        const Url = "https://fakestoreapi.com/products?sort=desc"
+        const Url = "https://fakestoreapi.com/products?sort=jewelery"
         fetch(Url).then(res => {
             res.json().then(res2 => {
                 if (res2) {
@@ -55,7 +55,7 @@ function featureProduct() {
                                         <img src={items.image} alt="" className='m-auto max-w-[200px] h-[200px]' />
                                         <div className='w-full'>
                                             <span><b>{items.title.slice(0, 30)}</b></span>
-                                            <p>price: <b>{items.price}</b></p>
+                                            <p>Rs: <b>{items.price}</b></p>
                                             <Stars ratings={items.rating} />
 
                                         </div>
