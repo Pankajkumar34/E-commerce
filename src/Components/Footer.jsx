@@ -12,7 +12,7 @@ function Footer() {
   return (
     <footer className='Footer-main bg-[#c3dacc86]'>
       <div className="container">
-        <div className="grid grid-cols-4">
+        <div className="sm:block sm:p-2 grid grid-cols-4">
           <div className="">
             <h3 className='py-4'><b>Contact</b></h3>
             <div>

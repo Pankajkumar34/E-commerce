@@ -1,7 +1,6 @@
 import React from 'react'
-import Bgimg from '../../assets/slidegir.jpg';
-import Bgimg1 from '../../assets/slidegirl1.jpg';
-import Icons from './Icons';
+
+// import Icons from './Icons';
 import { useNavigate } from 'react-router-dom';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
@@ -39,7 +38,7 @@ function Home() {
         }
       },
       {
-        breakpoint: 480,
+        breakpoint: 380,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1
@@ -47,26 +46,23 @@ function Home() {
       }
     ]
   };
-  const GotShop = () => {
-    navigate('/Shop')
-    alert("ppp")
-  }
+
   return (
     <div className='mainpage mt-[94px] overflow-hidden'>
 
 
       <Slider {...settings} >
 
-          <div className='banner1 bg-cover ' >
+          <div className='sm:h-[30vh] banner1 bg-cover ' >
 
             <div className="container">
-              <div className="flex">
-                <div className=" pl-[60px] banner-details  w-[100%] h-[500px] flex flex-col justify-center ">
+              <div className="sm:pt-[20px]  flex">
+                <div className="sm:h-[100%] pl-[60px] banner-details  w-[100%] h-[500px] flex flex-col justify-center ">
                   <span>Trade in offer !!</span>
-                  <h1 className='text-[41px] text-[#ff6000] font-extrabold'>Super value Deals</h1>
-                  <p className='text-[32px] pb-6'>On all products</p>
+                  <h1 className=' sm:text-[20px] text-[41px] text-[#ff6000] font-extrabold'>Super value Deals</h1>
+                  <p className='sm:text-[16px] sm:pb-0 text-[32px] pb-6'>On all products</p>
                   <span>Save more today with Apenck</span>
-                  <button className='border bg-[#2b3d4c] p-5 w-[150px] rounded-[10px] my-6 items-center text-white' onClick={() => navigate('/Shop')}>By Now</button>
+                  <button className='sm:w-[100px] sm:p-[10px] border bg-[#2b3d4c] p-5 w-[150px] rounded-[10px] my-6 items-center text-white' onClick={() => navigate('/Shop')}>By Now</button>
                 </div>
               </div>
             </div>
@@ -74,16 +70,16 @@ function Home() {
           </div>
 
 
-        <div className='banner bg-cover ' >
+        <div className='sm:h-[30vh] banner bg-cover ' >
 
           <div className="container">
-            <div className="flex">
-              <div className=" pl-[60px] banner-details  w-[100%] h-[500px] flex flex-col justify-center ">
+            <div className="sm:pt-[20px] flex ">
+              <div className=" sm:h-[100%] pl-[60px] banner-details  w-[100%] h-[500px] flex flex-col justify-center ">
                 <span>Trade in offer !!</span>
-                <h1 className='text-[41px] text-[#ff6000] font-extrabold'>Super value Deals</h1>
-                <p className='text-[32px] pb-6'>On all products</p>
+                <h1 className=' sm:text-[20px] text-[41px] text-[#ff6000] font-extrabold'>Super value Deals</h1>
+                <p className='sm:text-[16px] sm:pb-0 text-[32px] pb-6'>On all products</p>
                 <span>Save more today with Apenck</span>
-                <button className='border bg-[#2b3d4c] p-5 w-[150px] rounded-[10px] my-6 items-center text-white' onClick={() => navigate('/Shop')}>By Now</button>
+                <button className= ' sm:w-[100px] sm:p-[10px] border bg-[#2b3d4c] p-5 w-[150px] rounded-[10px] my-6 items-center text-white' onClick={() => navigate('/Shop')}>By Now</button>
               </div>
             </div>
           </div>
@@ -96,7 +92,7 @@ function Home() {
 
       <section>
         <div className='container'>
-          <Icons />
+          {/* <Icons /> */}
           <PopularProduct />
 
         </div>

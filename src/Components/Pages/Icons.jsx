@@ -29,13 +29,13 @@ function Icons() {
 
     ]
     return (
-        <div className='flex justify-between text-center'>
+        <div className='sm:grid sm:grid-cols-2 sm:px-2 sm:gap-1   flex justify-between text-center'>
             {
                 iconsArr?.map((items, id) => {
                     return (
                    
                     <div key={id} className='border py-3 my-3 px-3'>
-                        <img className='max-w-[80px]' src={items.img} alt="" />
+                        <img className='w-[60px] m-auto' src={items.img} alt="" />
                         <p>{items.title}</p>
                     </div>
                     

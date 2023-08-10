@@ -3,8 +3,10 @@ import tshirt from '../../assets/t-shirt.jpg'
 import redtshirt from '../../assets/redtshirt.jpg'
 function Tshirt() {
   let imageData=[
-    
+    {id:1,img:tshirt},
+    {id:2,img:redtshirt}
   ]
+  console.log(imageData)
   return (
     <div className='container'>
       <div className='main-t-shirt-box'>

@@ -51,7 +51,7 @@ function Header() {
                     <div className='container'>
 
 
-                        <div className=' flex items-center'>
+                        <div className='sm:justify-around flex items-center '>
                             <div className="sm:w-[50%] logo w-[20%] mr-3">
                                 <Link to='/'><img src={Logo} alt="Logo" className='max-w-[100%] h-[45px]' /></Link>
                             </div>
@@ -63,8 +63,8 @@ function Header() {
                                 <NavLink className='text-black' to={'About'}>About</NavLink>
                                 <NavLink className='text-black' to={'Contact'}>Contact</NavLink>
                             </div>
-                            <div className='sm:block w-[50%] hidden '>
-                                    <p className='fabars w-[100%] text-end'>{<FaBars />}</p>
+                            <div className='sm:block hidden '>
+                                {<FaBars className='fabars w-[100%] text-end' />}
                                 </div>
                             <div className='sm:hidden flext items-center justify-center gap-[1.75rem] w-[20%] flex text-[rgb(83,113,233)]'>
                                 <Link to={'Wishlist'} className='mr-2 flex flex-col items-center'>

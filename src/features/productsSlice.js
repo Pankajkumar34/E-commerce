@@ -6,7 +6,7 @@ export const Products = createSlice({
   name: "Products",
   initialState: {
     dataProducts: [],
-    value: [],
+    toggle:[('false')],
     cartCont: 0,
     loading: false,
     error: null,
@@ -40,10 +40,14 @@ export const Products = createSlice({
       const deleteData=state.dataProducts.filter((item)=>{
         return item.id !== action.payload
       })
+      state.cartCont -= 1;
 state.dataProducts=deleteData
     },
+    toggleDropDown:(state,action)=>{
+state.toggle=action.payload
+    }
   },
 });
 
-export const { AddProduct, deleteProduct } = Products.actions;
+export const { AddProduct, deleteProduct,toggleDropDown } = Products.actions;
 export default Products.reducer;
