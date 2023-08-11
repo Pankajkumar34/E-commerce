@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { data } from "autoprefixer";
+
 // import getAllProduct from '../Components/axiosHit'
 
 export const Products = createSlice({

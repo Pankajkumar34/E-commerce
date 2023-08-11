@@ -9,7 +9,8 @@ import About from "./Components/Pages/About";
 import Contact from "./Components/Pages/Contact";
 import Cart from "./Components/Pages/Cart";
 import Login from "./Components/Pages/Login";
-import Wishlist from "./Components/Pages/Wishlist";
+import Wishlist from "./Components/Pages/Wishlist"; 
+import SinglePage from "./Components/Pages/SinglePage/singlePage";
 function App() {
   
   // https://youtu.be/p53gC8PNsuo
@@ -27,8 +28,10 @@ function App() {
     <Route path="Cart" element={<Cart/>}/>
     <Route path="Login" element={<Login/>}/>
     <Route path="Wishlist" element={<Wishlist/>}/>
+    <Route path="product/:id" element={<SinglePage/>}/>
     
   </Route>
+
 </Routes>
 </BrowserRouter>
     </>
