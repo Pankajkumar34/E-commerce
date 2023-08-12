@@ -30,7 +30,7 @@ function Header() {
 
     return (
 
-        <header className=' Header-top relative z-[1] '>
+        <header className=' Header-top relative z-[999999] '>
             <div className="container">
                 <div className='sm:hidden grid grid-cols-3 items-center p-1'>
                     <div className='topheader'>

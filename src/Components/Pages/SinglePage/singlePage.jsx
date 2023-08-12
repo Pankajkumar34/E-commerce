@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ReactImageMagnify from 'react-image-magnify';
+import Paypal from '../../PayAppLogo/paypal.png';
+import { Link } from "react-router-dom";
 import Stars from "../stars";
 const SinglePage = () => {
     const [items, setItems] = useState([])
@@ -33,10 +35,12 @@ const SinglePage = () => {
                                     height:400
 
                                 },
+                                
                                 largeImage: {
                                     src:items.image,
-                                    width: 1000,
-                                    height: 1100
+                                    width: 1400,
+                                    height: 1500
+                                    
                                 }
                             }} />
 
@@ -50,8 +54,10 @@ const SinglePage = () => {
                                 <p>category: <b>{items.category}</b></p>
                                 <p>Rs: <b>{items.price}</b></p>
                                 <Stars ratings={items.rating} />
+                                <button className="border p-2 my-5 rounded bg-[#2b3d4c] text-white ">Buy Now</button>
                                 <div className="dsec">
                                     <p>{items.description}</p>
+                                    <Link > <img className='border border-black p-1 my-2' src={Paypal} alt="" /></Link>
                                 </div>
                             </div>
                         </div>
