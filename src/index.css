@@ -36,7 +36,22 @@ body {
   .cartCount {
     @apply w-[15px] h-[17px] flex items-center rounded-[100%] pl-[3px] left-[17px] bg-white absolute top-0;
   }
+  .slick-prev{
+    @apply sm:left-[3px] left-[34px] z-[1] !important;
+  }
+  .slick-next{
+    @apply sm:right-[15px] right-[34px] z-[1] !important;
+  }
+  /* //popular products  */
+.categoryBtn {
+  @apply sm:w-[180px] sm:bg-[#2b3d4c] sm:mr-2  sm:absolute  sm:right-0 text-center gap-[20px]  rounded-md !important;
 }
+.categoryBtn_button{
+  @apply sm:bg-inherit sm:border-none sm:text-white  border p-2 rounded bg-[#2b3d4c] text-white !important;
+}
+  
+}
+
 .banner {
   background-position: center;
   height: 80vh;
@@ -65,11 +80,11 @@ background-repeat: no-repeat;
   font-size: 30px;
 }
 
-.slick-prev {
+/* .slick-prev {
   left:34px;
   z-index: 1;
 }
 .slick-next {
   right: 34px;
   z-index: 1;
-}
+} */

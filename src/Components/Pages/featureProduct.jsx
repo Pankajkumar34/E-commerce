@@ -13,12 +13,12 @@ function featureProduct() {
 
     // API hit here 
     const productsFetch = () => {
-        const Url = "https://fakestoreapi.com/products?sort=jewelery"
+        const Url = "https://fakestoreapi.com/products"
         fetch(Url).then(res => {
             res.json().then(res2 => {
                 if (res2) {
                     setProduct(res2)
-                    console.log(res2)
+                    console.log(res2,"kkkpopop")
                 } else {
                     console.log("data not found")
                 }
@@ -26,24 +26,19 @@ function featureProduct() {
 
         })
     }
-
     const AddTOcart = (id) => {
-        console.log(checkDubbleCart,"ll")
         if (!checkDubbleCart.includes(id)) {
-            const cartdata = product?.find((items, index) => {
-                return items?.id === id
-            })
-            setDubbleCart([...checkDubbleCart, cartdata])
-
-            dispatch(AddProduct(cartdata))
-        } else  {
-            alert("match")
+            const cartdata = product?.find(item => item?.id === id);
+    
+            if (cartdata) {
+                setDubbleCart([...checkDubbleCart, id]);
+                dispatch(AddProduct(cartdata));
+            }
+        } else {
+            alert("Product is already in the cart.");
         }
-
-
-
-
     }
+    
     console.log(checkDubbleCart, "kk")
 
     useEffect(() => {

@@ -62,9 +62,16 @@ function Header() {
                                 <NavLink className='text-black' to={'About'}>About</NavLink>
                                 <NavLink className='text-black' to={'Contact'}>Contact</NavLink>
                             </div>
-                            <div className='sm:block hidden '>
+                            <div className='sm:block   hidden  '>
                                 {<FaBars className='fabars w-[100%] text-end' />}
-                                </div>
+                                {/* <div className=' relative'>
+                                    <Link to={'Cart'} className='mr-1 flex flex-col items-center'>
+                                        < CgShoppingCart />
+
+                                        <p className='cartCount '>{countCart}</p>
+                                    </Link>
+                                </div> */}
+                            </div>
                             <div className='sm:hidden flext items-center justify-center gap-[1.75rem] w-[20%] flex text-[rgb(83,113,233)]'>
                                 <Link to={'Wishlist'} className='mr-2 flex flex-col items-center'>
                                     <HiOutlineInboxIn />
@@ -75,14 +82,14 @@ function Header() {
                                     <VscAccount />
 
                                 </Link>
-                                <div className='relative'>
+                                <div className=' relative'>
                                     <Link to={'Cart'} className='mr-1 flex flex-col items-center'>
                                         < CgShoppingCart />
 
                                         <p className='cartCount '>{countCart}</p>
                                     </Link>
                                 </div>
-                                
+
                             </div>
 
 

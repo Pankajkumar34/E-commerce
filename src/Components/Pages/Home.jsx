@@ -57,7 +57,7 @@ function Home() {
 
             <div className="container">
               <div className="sm:pt-[20px]  flex">
-                <div className="sm:h-[100%] pl-[60px] banner-details  w-[100%] h-[500px] flex flex-col justify-center ">
+                <div className="sm:pl-[35px] sm:h-[100%] pl-[60px] banner-details  w-[100%] h-[500px] flex flex-col justify-center ">
                   <span>Trade in offer !!</span>
                   <h1 className=' sm:text-[20px] text-[41px] text-[#ff6000] font-extrabold'>Super value Deals</h1>
                   <p className='sm:text-[16px] sm:pb-0 text-[32px] pb-6'>On all products</p>

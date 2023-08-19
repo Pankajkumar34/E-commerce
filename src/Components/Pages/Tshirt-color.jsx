@@ -26,8 +26,8 @@ function Tshirt() {
   return (
     <div className='container'>
       <div className=' sm:block main-t-shirt-box flex  justify-around'>
-        <div className=' w-[100%] my-6 shadow shadow-black p-2 bg-cover h-[500px] '  style={{backgroundImage:`url(${bannerGirl})`}}>
-          <div className='max-w-[500px]'>
+        <div className='sm:h-[200px]  w-[100%] my-6 shadow shadow-black p-2 bg-cover bg-center h-[500px] '  style={{backgroundImage:`url(${bannerGirl})`}}>
+          <div className='sm:max-w-[200px] max-w-[500px]'>
             {View}
           </div>
           {/* <div className='w-[400px] m-auto relative z-[9999] '>

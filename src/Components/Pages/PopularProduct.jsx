@@ -60,11 +60,11 @@ function PopularProduct() {
                             <div className='sm:block sm:px-2  hidden '>
                                 <h2 className='sm:border sm:w-[180px] text-center p-2 rounded bg-[#2b3d4c] text-white ' onClick={() => dispatch(toggleDropDown(!reduxToggle.toggle))}>Category</h2>
                             </div>
-                            <div className='sm:w-[180px]  sm:absolute  sm:right-0 text-center gap-[20px]  rounded-md' style={{ display: !reduxToggle.toggle ? "none" : "block" }}>
-                                <button className='sm:bg-inherit sm:border-none sm:text-white  border p-2 rounded bg-[#2b3d4c] text-white ' onClick={() => setcategory("electronics")}>Electronics</button>
-                                <button className=' sm:bg-inherit sm:border-none sm:text-white   border p-2  rounded bg-[#2b3d4c] text-white ' onClick={() => setcategory("jewelery")}>jewelery</button>
-                                <button className='sm:bg-inherit sm:border-none sm:text-white   border p-2  rounded bg-[#2b3d4c] text-white ' onClick={() => setcategory("men's clothing")}>men's clothing</button>
-                                <button className='sm:bg-inherit sm:border-none sm:text-white   border p-2  rounded bg-[#2b3d4c] text-white ' onClick={() => setcategory("women's clothing")}>women's clothing</button>
+                            <div className='categoryBtn ' style={{ display: !reduxToggle.toggle ? "none" : "block" }}>
+                                <button className='categoryBtn_button ' onClick={() => setcategory("electronics")}>Electronics</button>
+                                <button className='categoryBtn_button' onClick={() => setcategory("jewelery")}>jewelery</button>
+                                <button className='categoryBtn_button' onClick={() => setcategory("men's clothing")}>men's clothing</button>
+                                <button className='categoryBtn_button' onClick={() => setcategory("women's clothing")}>women's clothing</button>
                             </div>
 
                         </div>

@@ -1,15 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteProduct } from '../../features/productsSlice';
 import { useNavigate } from 'react-router-dom';
+
 function Cart() {
   const dispatch = useDispatch()
-const navigate =useNavigate()
-  const carData = useSelector((state) => {
+  const navigate = useNavigate()
+  const [Quantity, setQuantity] = useState(1) // Quantity
 
+  const QuantityCount = (operator) => {
+    console.log(operator)
+    if (operator === "Decrement") {
+     if(Quantity>1){
+      setQuantity(Quantity-1)
+     }
+       
+      
+    }else{
+      if(Quantity<10){
+        setQuantity(Quantity+1)
+       }
+      
+    }
+  }
+
+  // redux selector//
+  const carData = useSelector((state) => {
     return state.data.dataProducts
   })
-
+  console.log(carData, "pp")
 
   return (
     <div className='container'>
@@ -19,11 +38,11 @@ const navigate =useNavigate()
         </div>
         {
           carData.length === 0 ?
-           <>
-           <h1 className='text-[30px] font-extrabold my-[10px]'>Your Cart Empty </h1>
-           <button onClick={()=>navigate('/')} className='border p-2 rounded bg-[#2b3d4c] text-white '><b>Shop Now</b></button>
-          </> 
-          :
+            <>
+              <h1 className='text-[30px] font-extrabold my-[10px]'>Your Cart Empty </h1>
+              <button onClick={() => navigate('/')} className='border p-2 rounded bg-[#2b3d4c] text-white '><b>Shop Now</b></button>
+            </>
+            :
             <table className=' w-full'>
               <thead>
                 <tr>
@@ -51,8 +70,18 @@ const navigate =useNavigate()
 
                         </td>
                         <td> <p><b>Rs : {items.price} </b></p></td>
-                        <td>Germany</td>
-                        <td>Germany</td>
+                        <td>
+                          <span className='border p-2 cursor-pointer' onClick={() => QuantityCount("Decrement")}>-</span>
+                          <span className='border p-2 cursor-pointer' >{Quantity}</span>
+                          <span className='border p-2 cursor-pointer' onClick={() => QuantityCount("Increment")}>+</span></td>
+
+                        <td >
+                          <span>Rs:  {items.price}</span> <br />
+                          <button className='border p-2 rounded'>Buy</button>
+                        </td>
+
+
+
                       </tr>
 
 

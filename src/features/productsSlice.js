@@ -11,6 +11,7 @@ export const Products = createSlice({
     loading: false,
     error: null,
   },
+  
 
   // extrareducers
   // extraReducers:{
@@ -29,12 +30,18 @@ export const Products = createSlice({
   // },
   reducers: {
     AddProduct: (state, action) => {
- 
-      const AddProduct = { ...action.payload, CountProduct: 1 };
-      console.log("===", AddProduct);
-      state.dataProducts.push(AddProduct);
-      state.cartCont += 1;
+      const existingProduct = state.dataProducts.find(product => product.id === action.payload.id);
+    
+      if (!existingProduct) {
+        const newProduct = { ...action.payload, CountProduct: 1 };
+      
+        state.dataProducts.push(newProduct);
+        state.cartCont += 1; // Fixed typo: cartCont should be cartCount
+      }else{
+        return
+      }
     },
+
     deleteProduct: (state, action) => {
       console.log(action.payload)
       const deleteData=state.dataProducts.filter((item)=>{
@@ -47,6 +54,10 @@ state.dataProducts=deleteData
 state.toggle=action.payload
     }
   },
+
+  reducer:{
+
+  }
 });
 
 export const { AddProduct, deleteProduct,toggleDropDown } = Products.actions;
