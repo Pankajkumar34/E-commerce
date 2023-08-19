@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { AddProduct, toggleDropDown } from '../../features/productsSlice';
+import { toggleDropDown } from '../../features/productsSlice';
 import { useNavigate } from 'react-router-dom';
 function PopularProduct() {
     const [product, setProduct] = useState([])
     const [category, setcategory] = useState('')
-    const [checkDubbleCart, setDubbleCart] = useState([])
+
     const dispatch = useDispatch()
     const reduxToggle = useSelector((state) => {
         return state.data
     })
-    console.log(reduxToggle, "oooo")
+  
     const navigate=useNavigate()
 
     // API hit here 
@@ -32,17 +32,7 @@ function PopularProduct() {
         })
     }
 
-    const AddTOcart = (id) => {
-
-        const cartdata = product.find((items, index) => {
-            return items.id === id
-        })
-        setDubbleCart([...checkDubbleCart, cartdata])
-
-        dispatch(AddProduct(cartdata))
-
-    }
-
+   
     useEffect(() => {
         productsFetch()
     }, [category])

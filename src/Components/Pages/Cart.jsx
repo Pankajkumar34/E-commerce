@@ -2,33 +2,28 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteProduct } from '../../features/productsSlice';
 import { useNavigate } from 'react-router-dom';
+import { Increment } from '../../features/QuantitySlice';
 
 function Cart() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() // dispatch
   const navigate = useNavigate()
-  const [Quantity, setQuantity] = useState(1) // Quantity
-
-  const QuantityCount = (operator) => {
-    console.log(operator)
-    if (operator === "Decrement") {
-     if(Quantity>1){
-      setQuantity(Quantity-1)
-     }
-       
-      
-    }else{
-      if(Quantity<10){
-        setQuantity(Quantity+1)
-       }
-      
-    }
+  const [checkItems,setCheckItems]=useState('')
+  // increment decrement
+  const QuantityCount = (id,operator) => {
+    setCheckItems(id)
+    dispatch(Increment([id,operator]))
   }
+  // increment decrement end
 
-  // redux selector//
+  // redux selectors//
   const carData = useSelector((state) => {
-    return state.data.dataProducts
+    return state.data
   })
-  console.log(carData, "pp")
+
+  const QuantityItems = useSelector((state) => {
+    return state.itemsqty
+  })
+
 
   return (
     <div className='container'>
@@ -37,7 +32,7 @@ function Cart() {
           <h2 className='font-bold text-white  '>Your <span>Shopping Cart</span></h2>
         </div>
         {
-          carData.length === 0 ?
+          carData?.dataProducts.length < 1 ?
             <>
               <h1 className='text-[30px] font-extrabold my-[10px]'>Your Cart Empty </h1>
               <button onClick={() => navigate('/')} className='border p-2 rounded bg-[#2b3d4c] text-white '><b>Shop Now</b></button>
@@ -54,9 +49,9 @@ function Cart() {
               </thead>
               <tbody>
                 {
-                  carData?.map((items, index) => {
+                  carData?.dataProducts?.map((items, index) => {
                     return (
-                      <tr className='border px-3'>
+                      <tr className='border px-3' key={index}>
                         <td >
                           <div className='flex items-center p-2 gap-3'>
 
@@ -71,12 +66,12 @@ function Cart() {
                         </td>
                         <td> <p><b>Rs : {items.price} </b></p></td>
                         <td>
-                          <span className='border p-2 cursor-pointer' onClick={() => QuantityCount("Decrement")}>-</span>
-                          <span className='border p-2 cursor-pointer' >{Quantity}</span>
-                          <span className='border p-2 cursor-pointer' onClick={() => QuantityCount("Increment")}>+</span></td>
+                          <span className='border p-2 cursor-pointer' onClick={() => QuantityCount(items.id, "Decrement")}>-</span>
+                          <span className='border p-2 cursor-pointer' >{QuantityItems.value}</span>
+                          <span className='border p-2 cursor-pointer' onClick={() => QuantityCount(items.id, "Increment")}>+</span></td>
 
                         <td >
-                          <span>Rs:  {items.price}</span> <br />
+                          <span>Rs:  {Math.ceil(QuantityItems.value * items.price)}</span> <br />
                           <button className='border p-2 rounded'>Buy</button>
                         </td>
 

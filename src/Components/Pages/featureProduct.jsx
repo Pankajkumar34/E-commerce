@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 
 import { AddProduct } from '../../features/productsSlice';
-
+import { AddItem } from '../../features/QuantitySlice';
 import Stars from './stars';
 
 function featureProduct() {
@@ -18,7 +18,7 @@ function featureProduct() {
             res.json().then(res2 => {
                 if (res2) {
                     setProduct(res2)
-                    console.log(res2,"kkkpopop")
+                    console.log(res2,"result")
                 } else {
                     console.log("data not found")
                 }
@@ -33,6 +33,7 @@ function featureProduct() {
             if (cartdata) {
                 setDubbleCart([...checkDubbleCart, id]);
                 dispatch(AddProduct(cartdata));
+                dispatch( AddItem(cartdata));
             }
         } else {
             alert("Product is already in the cart.");

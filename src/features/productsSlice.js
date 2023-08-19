@@ -1,17 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// import getAllProduct from '../Components/axiosHit'
 
 export const Products = createSlice({
   name: "Products",
   initialState: {
     dataProducts: [],
-    toggle:[('false')],
+    toggle: [('false')],
     cartCont: 0,
     loading: false,
     error: null,
   },
-  
+
 
   // extrareducers
   // extraReducers:{
@@ -31,34 +30,31 @@ export const Products = createSlice({
   reducers: {
     AddProduct: (state, action) => {
       const existingProduct = state.dataProducts.find(product => product.id === action.payload.id);
-    
+
       if (!existingProduct) {
         const newProduct = { ...action.payload, CountProduct: 1 };
-      
+
         state.dataProducts.push(newProduct);
         state.cartCont += 1; // Fixed typo: cartCont should be cartCount
-      }else{
+      } else {
         return
       }
     },
 
     deleteProduct: (state, action) => {
       console.log(action.payload)
-      const deleteData=state.dataProducts.filter((item)=>{
+      const deleteData = state.dataProducts.filter((item) => {
         return item.id !== action.payload
       })
       state.cartCont -= 1;
-state.dataProducts=deleteData
+      state.dataProducts = deleteData
     },
-    toggleDropDown:(state,action)=>{
-state.toggle=action.payload
+    toggleDropDown: (state, action) => {
+      state.toggle = action.payload
     }
   },
 
-  reducer:{
-
-  }
 });
 
-export const { AddProduct, deleteProduct,toggleDropDown } = Products.actions;
+export const { AddProduct, deleteProduct, toggleDropDown } = Products.actions;
 export default Products.reducer;
