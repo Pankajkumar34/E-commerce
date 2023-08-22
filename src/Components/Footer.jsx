@@ -73,7 +73,7 @@ function Footer() {
           </div>
         </div>
         <hr className='my-5 border border-black'/>
-        <div className='flex justify-between h-[100px]'>
+        <div className='sm:block px-3 flex justify-between h-[100px]'>
           <div>
             <p>&#169;  Developed by Pankaj Kumar Kushwaha 2023</p>
           </div>

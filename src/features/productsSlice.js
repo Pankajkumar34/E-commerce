@@ -32,7 +32,7 @@ export const Products = createSlice({
       const existingProduct = state.dataProducts.find(product => product.id === action.payload.id);
 
       if (!existingProduct) {
-        const newProduct = { ...action.payload, CountProduct: 1 };
+        const newProduct = { ...action.payload, Quantity: 1 };
 
         state.dataProducts.push(newProduct);
         state.cartCont += 1; // Fixed typo: cartCont should be cartCount
@@ -42,7 +42,7 @@ export const Products = createSlice({
     },
 
     deleteProduct: (state, action) => {
-      console.log(action.payload)
+
       const deleteData = state.dataProducts.filter((item) => {
         return item.id !== action.payload
       })
@@ -51,10 +51,32 @@ export const Products = createSlice({
     },
     toggleDropDown: (state, action) => {
       state.toggle = action.payload
+    },
+    QutyIncrement: (state, action) => {
+      let [id, operator] = action.payload
+
+      let QuantityCount = state?.dataProducts?.map((currentitem) => {
+        if (currentitem.id === id && operator === "Increment" && currentitem.Quantity < 10) {
+          return { ...currentitem, Quantity: currentitem.Quantity + 1 }
+          // ,Quantity:currentitem.Quantity+1}
+
+        } else if (currentitem.id === id && operator === "Decrement" && currentitem.Quantity > 1) {
+          return { ...currentitem, Quantity: currentitem.Quantity - 1 }
+          // ,Quantity:currentitem.Quantity-1
+        }
+        return currentitem
+
+      })
+
+      return { ...state, dataProducts: QuantityCount }
     }
   },
+  clearCart: (state,action) => {
+   return {...state,dataProducts:[]}
+  }
+
 
 });
 
-export const { AddProduct, deleteProduct, toggleDropDown } = Products.actions;
+export const { AddProduct, deleteProduct, toggleDropDown, QutyIncrement ,clearCart} = Products.actions;
 export default Products.reducer;

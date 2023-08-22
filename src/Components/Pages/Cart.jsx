@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteProduct } from '../../features/productsSlice';
+import { deleteProduct, QutyIncrement } from '../../features/productsSlice';
 import { useNavigate } from 'react-router-dom';
-import { Increment } from '../../features/QuantitySlice';
+// import { Increment } from '../../features/QuantitySlice';
 
 function Cart() {
   const dispatch = useDispatch() // dispatch
   const navigate = useNavigate()
-  const [checkItems,setCheckItems]=useState('')
+  const [checkItems, setCheckItems] = useState('')
+  const [Quantity, setQuantity] = useState(1)
+
   // increment decrement
-  const QuantityCount = (id,operator) => {
-    setCheckItems(id)
-    dispatch(Increment([id,operator]))
+  const QuantityCount = (id, operator) => {
+
+    dispatch(QutyIncrement([id, operator]))
+
   }
   // increment decrement end
 
@@ -20,9 +23,7 @@ function Cart() {
     return state.data
   })
 
-  const QuantityItems = useSelector((state) => {
-    return state.itemsqty
-  })
+  console.log(carData.dataProducts, "cart")
 
 
   return (
@@ -35,59 +36,66 @@ function Cart() {
           carData?.dataProducts.length < 1 ?
             <>
               <h1 className='text-[30px] font-extrabold my-[10px]'>Your Cart Empty </h1>
-              <button onClick={() => navigate('/')} className='border p-2 rounded bg-[#2b3d4c] text-white '><b>Shop Now</b></button>
+              <button onClick={() => navigate('/shop')} className='border p-2 rounded bg-[#2b3d4c] text-white '><b>Shop Now</b></button>
             </>
-            :
-            <table className=' w-full'>
-              <thead>
-                <tr>
-                  <th className='w-[40%]'>Items</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  carData?.dataProducts?.map((items, index) => {
-                    return (
-                      <tr className='border px-3' key={index}>
-                        <td >
-                          <div className='flex items-center p-2 gap-3'>
+            : <div>
 
-                            <img src={items.image} alt="" className='max-w-[200px] h-[200px]' />
-                            <div>
-                              <p>{items.title}</p>
-                              <button className='border p-2' onClick={() => dispatch(deleteProduct(items.id))}>Remove</button>
+              <table className=' w-full'>
+                <thead>
+                  <tr>
+                    <th className='text w-[40%]'>Items</th>
+                    <th className="">Price</th>
+                    <th className="">Quantity</th>
+                    <th className="">Total</th>
+                  </tr>
+                </thead>
+                <tbody className=''>
+                  {
+                    carData?.dataProducts?.map((items, index) => {
+
+                      return (
+
+                        <tr className='border rounded ' key={index}>
+                          <td >
+                            <div className='flex items-center p-2 gap-3'>
+
+                              <img src={items.image} alt="" className='max-w-[200px] h-[200px]' />
+                              <div>
+                                <p>{items.title}</p>
+                                <button className='border p-2 bg-[#2b3d4c] rounded text-white' onClick={() => dispatch(deleteProduct(items.id))}>Remove</button>
+                              </div>
+
                             </div>
+                          </td>
 
-                          </div>
+                          <td> <p><b>Rs : {items.price} </b></p></td>
+                          <td>
 
-                        </td>
-                        <td> <p><b>Rs : {items.price} </b></p></td>
-                        <td>
-                          <span className='border p-2 cursor-pointer' onClick={() => QuantityCount(items.id, "Decrement")}>-</span>
-                          <span className='border p-2 cursor-pointer' >{QuantityItems.value}</span>
-                          <span className='border p-2 cursor-pointer' onClick={() => QuantityCount(items.id, "Increment")}>+</span></td>
+                            <span className='border p-2 cursor-pointer' onClick={() => QuantityCount(items.id, "Decrement")}>-</span>
+                            <span className='border p-2 cursor-pointer' >{items.Quantity}</span>
+                            <span className='border p-2 cursor-pointer' onClick={() => QuantityCount(items.id, "Increment")}>+</span>
 
-                        <td >
-                          <span>Rs:  {Math.ceil(QuantityItems.value * items.price)}</span> <br />
-                          <button className='border p-2 rounded'>Buy</button>
-                        </td>
+                          </td>
 
+                          <td >
+                            <span>Rs:  {Math.ceil(items.Quantity * items.price)}</span> <br />
+                            <button className='border p-2 rounded bg-[#2b3d4c]  text-white w-[87px]'>Buy</button>
+                          </td>
 
+                        </tr>
 
-                      </tr>
+                      )
 
+                    })
 
-                    )
+                  }
+                </tbody>
 
-                  })
-
-                }
-              </tbody>
-
-            </table>
+              </table>
+              <div className='text-left'>
+                <button className='border p-2 my-[9px] mx-[15px] rounded bg-[#2b3d4c]  text-white w-[115px] ' >Clear Cart</button>
+              </div>
+            </div>
         }
 
 

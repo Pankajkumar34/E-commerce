@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 
 import { AddProduct } from '../../features/productsSlice';
-import { AddItem } from '../../features/QuantitySlice';
+
 import Stars from './stars';
 
 function featureProduct() {
@@ -18,7 +18,7 @@ function featureProduct() {
             res.json().then(res2 => {
                 if (res2) {
                     setProduct(res2)
-                    console.log(res2,"result")
+                    console.log("data fetched successfully")
                 } else {
                     console.log("data not found")
                 }
@@ -33,14 +33,13 @@ function featureProduct() {
             if (cartdata) {
                 setDubbleCart([...checkDubbleCart, id]);
                 dispatch(AddProduct(cartdata));
-                dispatch( AddItem(cartdata));
+               
             }
         } else {
             alert("Product is already in the cart.");
         }
     }
     
-    console.log(checkDubbleCart, "kk")
 
     useEffect(() => {
         productsFetch()
@@ -48,14 +47,14 @@ function featureProduct() {
     return (
         <div className='maiCard'>
             <div className='container'>
-                <div className='grid grid-cols-4 place-items-center justify-center gap-3'>
+                <div className=' sm:grid-cols-2 sm:gap-0 grid grid-cols-4 place-items-center justify-center gap-3'>
                     {
                         product?.map((items, id) => {
 
                             return (
-                                <div key={id} className="submain flex justify-center  border m-2 w-[80%] p-2">
+                                <div key={id} className="sm:w-[92%] submain flex justify-center  border m-2 w-[80%] p-2">
                                     <div>
-                                        <img src={items.image} alt="" className='m-auto max-w-[200px] h-[200px]' />
+                                        <img src={items.image} alt="" className=' sm:max-w-[150px] sm:h-[150px] m-auto max-w-[200px] h-[200px]' />
                                         <div className='w-full'>
                                             <span><b>{items.title.slice(0, 30)}</b></span>
                                             <p>Rs: <b>{items.price}</b></p>
