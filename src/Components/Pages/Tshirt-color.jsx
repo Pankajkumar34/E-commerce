@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import men1 from '../../assets/men1j.jpg'
 
-import ReactImageMagnify from 'react-image-magnify';
+// import ReactImageMagnify from 'react-image-magnify';
 import { useLottie } from 'lottie-react';
 import OfferSale from '../Lottie/offerSale2.json';
 import bannerGirl from '../../assets/bannergirl.png';

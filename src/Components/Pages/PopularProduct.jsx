@@ -12,6 +12,7 @@ function PopularProduct() {
         return state.data
     })
   
+   
     const navigate=useNavigate()
 
     // API hit here 

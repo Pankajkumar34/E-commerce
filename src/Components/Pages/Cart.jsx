@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteProduct, QutyIncrement } from '../../features/productsSlice';
+import { clearCart, deleteProduct, QutyIncrement } from '../../features/productsSlice';
 import { useNavigate } from 'react-router-dom';
 // import { Increment } from '../../features/QuantitySlice';
 
@@ -23,7 +23,7 @@ function Cart() {
     return state.data
   })
 
-  console.log(carData.dataProducts, "cart")
+  console.log(carData, "cart")
 
 
   return (
@@ -93,7 +93,7 @@ function Cart() {
 
               </table>
               <div className='text-left'>
-                <button className='border p-2 my-[9px] mx-[15px] rounded bg-[#2b3d4c]  text-white w-[115px] ' >Clear Cart</button>
+                <button className='border p-2 my-[9px] mx-[15px] rounded bg-[#2b3d4c]  text-white w-[115px] ' onClick={()=>dispatch(clearCart())}>Clear Cart</button>
               </div>
             </div>
         }

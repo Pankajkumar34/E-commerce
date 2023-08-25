@@ -20,7 +20,7 @@ function Shop() {
       </section>
       <section >
         <div className="container">
-          <div className="mainproduct mt-[90px]">
+          <div className="mainproduct mt-[10px]">
             <FeatureProduct />
           </div>
         </div>

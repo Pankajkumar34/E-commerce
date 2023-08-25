@@ -69,11 +69,13 @@ export const Products = createSlice({
       })
 
       return { ...state, dataProducts: QuantityCount }
-    }
+    },
+    clearCart: (state) => {
+      state.dataProducts=[]
+      state.cartCont=0
+     }
   },
-  clearCart: (state,action) => {
-   return {...state,dataProducts:[]}
-  }
+ 
 
 
 });
