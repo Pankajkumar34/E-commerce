@@ -14,8 +14,7 @@ function featureProduct() {
     const productData = useSelector((state) => {
         return state?.Items
     })
-    console.log(productData.Search_items
-        , "iii")
+    console.log(productData.Search_items , "iii")
 
 
     // API hit here 
@@ -46,7 +45,8 @@ function featureProduct() {
             alert("Product is already in the cart.");
         }
     }
-
+    
+  
 
     useEffect(() => {
         productsFetch()

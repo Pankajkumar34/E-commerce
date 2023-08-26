@@ -19,6 +19,7 @@
     "path-browserify": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-speech-to-text": "^0.8.0",
     "react-icons": "^4.10.1",
     "react-image-magnify": "^2.7.4",
     "react-redux": "^8.1.2",

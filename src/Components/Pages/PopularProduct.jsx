@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { toggleDropDown } from '../../features/productsSlice';
 import { useNavigate } from 'react-router-dom';
+import { categoryData } from '../../Utils/category';
 function PopularProduct() {
     const [product, setProduct] = useState([])
     const [category, setcategory] = useState('')
@@ -16,31 +17,31 @@ function PopularProduct() {
     const navigate=useNavigate()
 
     // API hit here 
-    const productsFetch = () => {
-
-
-        const Url = `https://fakestoreapi.com/products/category/${category ? category : "electronics"}`
-        fetch(Url).then(res => {
-            res.json().then(res2 => {
-                if (res2) {
-                    setProduct(res2)
-                    console.log(res2)
-                } else {
-                    console.log("data not found")
-                }
-            })
-
-        })
+    const productsFetch = async() => {
+      const data=await  categoryData(category)
+      setProduct(data)
+       
     }
 
    
     useEffect(() => {
+        const array=[1,10,40,45,110,100,122,]
+        array.map((ele,index)=>{
+            if(ele>0 && ele<100){
+                console.log(ele,"ele")
+            }else{
+                console.log(ele,"else")
+            }
+        })
         productsFetch()
     }, [category])
 
   const SingleProductId=(id)=>{
     navigate(`product/${id}`)
   }
+
+ 
+
     return (
         <>
             <div className='maiCard mt-[40px]'>
@@ -61,11 +62,11 @@ function PopularProduct() {
                         </div>
                     </div>
 
-                    <div className='sm:grid sm:grid-cols-1 sm:place-items-center justify-center popularProduct grid grid-cols-2'>
+                    <div className='sm:grid sm:grid-cols-1 sm:place-items-center justify-center popularProduct grid grid-cols-2 gap-2'>
                         {
                             product.slice(0, 4)?.map((items, index) => {
                                 return (
-                                    <div key={index} className="submain border rounded sm:m-2 m-[10px] w-[90%]  p-2">
+                                    <div key={index} className="submain border rounded sm:m-2 m-[10px] w-[100%]  p-2">
                                         <div className='flex'>
                                             <img src={items.image} alt="" className='sm:max-w-[100px] sm:h-[100px] m-auto max-w-[200px] h-[200px]' />
                                             <div className='w-full text-center my-[20px]'>
