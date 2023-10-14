@@ -25,14 +25,14 @@ function PopularProduct() {
 
    
     useEffect(() => {
-        const array=[1,10,40,45,110,100,122,]
-        array.map((ele,index)=>{
-            if(ele>0 && ele<100){
-                console.log(ele,"ele")
-            }else{
-                console.log(ele,"else")
-            }
-        })
+        // const array=[1,10,40,45,110,100,122,]
+        // array.map((ele,index)=>{
+        //     if(ele>0 && ele<100){
+        //         console.log(ele,"ele")
+        //     }else{
+        //         console.log(ele,"else")
+        //     }
+        // })
         productsFetch()
     }, [category])
 

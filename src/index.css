@@ -14,42 +14,65 @@
   --primary2: #354d61;
 }
 
-body {
-}
+body {}
+
 @layer {
   body {
     font-family: "Poppins", sans-serif;
+   
   }
+
   .active {
-    @apply text-[#ff0000] !important;
+    @apply text-[#f97911] !important;
   }
+
   .logo {
     @apply h-[6em] p-[1.5em];
   }
 
   .header-upper {
-    @apply bg-[#dfece4];
+
+    @apply bg-[#fafafb];
+    box-shadow: 1px 1px;
   }
+
   .Header-top {
-    @apply bg-[#e4f0e9da];
+    @apply bg-[#e9eef4];
   }
+.siginbtn{
+  @apply  text-[10px] border mx-0 my-[5px] p-[5px] rounded-[5px] border-[#5b9bea] !important;
+
+}
   .cartCount {
     @apply w-[15px] h-[17px] flex items-center rounded-[100%] pl-[3px] left-[17px] bg-white absolute top-0;
   }
-  .slick-prev{
+
+  .slick-prev {
     @apply sm:left-[3px] left-[34px] z-[1] !important;
   }
-  .slick-next{
+
+  .slick-next {
     @apply sm:right-[15px] right-[34px] z-[1] !important;
   }
+
   /* //popular products  */
-.categoryBtn {
-  @apply sm:w-[180px] sm:bg-[#2b3d4c] sm:mr-2  sm:absolute  sm:right-0 text-center gap-[20px]  rounded-md !important;
-}
-.categoryBtn_button{
-  @apply sm:bg-inherit sm:border-none sm:text-white  border p-2 rounded bg-[#2b3d4c] text-white !important;
-}
-  
+  .categoryBtn {
+    @apply sm:w-[180px] sm:bg-[#2b3d4c] sm:mr-2 sm:absolute sm:right-0 text-center gap-[20px] rounded-md !important;
+  }
+
+  .categoryBtn_button {
+    @apply sm:bg-inherit sm:border-none sm:text-white border p-2 rounded bg-[#2b3d4c] text-white !important;
+  }
+
+  /* signup page */
+  .formFieldsRadio {
+    @apply flex justify-center gap-8 items-center border mx-0 my-[10px] px-0 py-[10px] rounded-[10px] border-black !important;
+  }
+
+  .ProfilePic {
+    @apply border w-[100px] h-[100px] border-black m-auto rounded-[100%] border-solid !important;
+    /* margin: 10px 0; */
+  }
 }
 
 .banner {
@@ -57,19 +80,22 @@ body {
   height: 80vh;
   background-image: url("./assets/bgimg.jpg");
 }
+
 .banner1 {
-background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-image: url("./assets/girlSlidee.jpg");
   height: 80vh;
 
 }
-.popularProductheading{
+
+.popularProductheading {
   font-size: 40px;
   font-weight: 700;
   color: #ff6000;
 
   font-family: math;
 }
+
 .slick-prev:before {
   content: '←';
   font-size: 30px;

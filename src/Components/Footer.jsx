@@ -10,7 +10,7 @@ import Apple from './PayAppLogo/apple.jpg';
 import Paypal from './PayAppLogo/paypal.png';
 function Footer() {
   return (
-    <footer className='Footer-main bg-[#c3dacc86]'>
+    <footer className='Footer-main bg-[#646464]'>
       <div className="container">
         <div className="sm:block sm:p-2 grid grid-cols-4">
           <div className="">

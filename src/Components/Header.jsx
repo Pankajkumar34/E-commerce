@@ -7,10 +7,22 @@ import { CgShoppingCart } from 'react-icons/cg';
 import { FaBars } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Logo from '../assets/apn.png';
+import Logo from '../assets/Key.png';
 import { useSelector } from 'react-redux'
-
+import { useAuth0 } from "@auth0/auth0-react";
 function Header() {
+    
+
+    const { loginWithPopup, user, logout, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
+    const saveuserData = () => {
+        localStorage.setItem("userId", user.email)
+        localStorage.setItem("sub", user.sub)
+        localStorage.setItem("updated_at", user.updated_at)
+    }
+  
+
+
+
     const countCart = useSelector((state) => {
         return state.data.cartCont
     })
@@ -23,10 +35,13 @@ function Header() {
         }
     }
     useEffect(() => {
+        if (isAuthenticated) {
+            saveuserData()
+        }
         changeBackground()
         // adding the event when scroll change background
         window.addEventListener("scroll", changeBackground)
-    })
+    },[])
 
     return (
 
@@ -52,7 +67,7 @@ function Header() {
 
                         <div className='sm:justify-around flex items-center '>
                             <div className="sm:w-[50%] logo w-[20%] mr-3">
-                                <Link to='/'><img src={Logo} alt="Logo" className='max-w-[100%] h-[45px]' /></Link>
+                                <Link to='/'><img src={Logo} alt="Logo" className='max-w-[100%] w-[100px] m-[-22px]' /></Link>
                             </div>
 
                             <div className='sm:hidden flex items-center gap-[50px] uppercase w-[60%] '>
@@ -78,10 +93,7 @@ function Header() {
 
                                 </Link>
 
-                                <Link to={'Login'} className='flex flex-col items-center'>
-                                    <VscAccount />
-
-                                </Link>
+                    
                                 <div className=' relative'>
                                     <Link to={'Cart'} className='mr-1 flex flex-col items-center'>
                                         < CgShoppingCart />
@@ -89,6 +101,13 @@ function Header() {
                                         <p className='cartCount '>{countCart}</p>
                                     </Link>
                                 </div>
+                                <Link  className='flex flex-col items-center'>
+                                  { isAuthenticated?
+                                  <>
+                                  <img src={user.picture} alt={user.name} className='w-[30px] rounded-[100%]' style={{border:isAuthenticated?"2px solid #fcb041":"2px solid red"}}/> <span className='siginbtn' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} >Logout</span>
+                                  </>:<><VscAccount  className='w-[30px]'/> <span className='siginbtn' onClick={loginWithPopup} >Login</span></>} 
+
+                                </Link>
 
                             </div>
 
